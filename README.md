@@ -23,4 +23,4 @@ Have fun playing around with Sort Visualizer tool.
 Demo (Youtube Link)
 -------------------
 Youtube: <br/>
-[![Watch the video]()](https://www.youtube.com/watch?v=pNUS9SKeZT8)
+[![Watch the video](https://img.youtube.com/vi/pNUS9SKeZT8/default.jpg)](https://www.youtube.com/watch?v=pNUS9SKeZT8)
