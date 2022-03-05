@@ -23,4 +23,6 @@ Have fun playing around with Sort Visualizer tool.
 Demo (Youtube Link)
 -------------------
 Youtube: <br/>
-[![Watch the video](https://img.youtube.com/vi/pNUS9SKeZT8/default.jpg)](https://www.youtube.com/watch?v=pNUS9SKeZT8)
+<a href="https://www.youtube.com/watch?v=pNUS9SKeZT8" target="_blank">
+ <img src="https://img.youtube.com/vi/pNUS9SKeZT8/default.jpg" alt="Watch the video" width="240" height="180" border="10" />
+</a>
