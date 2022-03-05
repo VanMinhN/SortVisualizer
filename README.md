@@ -15,7 +15,7 @@ Only require to have Visual Studio 2019 or above.
 To run the application
 ----------------------
 You can clone the repos with this command: <br/>
-git clone https://github.com/VanMinhN/SortVisualizer.git 
+``git clone https://github.com/VanMinhN/SortVisualizer.git ``
 <br/><br/>
 Then go to SortVisualier/bin/Debug/net5.0windows/ and run Sort Visualizer Application.
 Have fun playing around with Sort Visualizer tool.
