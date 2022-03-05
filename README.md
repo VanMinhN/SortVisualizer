@@ -17,7 +17,7 @@ To run the application
 You can clone the repos with this command: <br/>
 ``git clone https://github.com/VanMinhN/SortVisualizer.git ``
 <br/><br/>
-Then go to SortVisualier/bin/Debug/net5.0windows/ and run Sort Visualizer Application.
+Then go to SortVisualier/bin/Debug/net5.0windows/ and run Sort Visualizer Application.<br/>
 Have fun playing around with Sort Visualizer tool.
 
 Demo (Youtube Link)
