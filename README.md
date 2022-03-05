@@ -22,4 +22,5 @@ Have fun playing around with Sort Visualizer tool.
 
 Demo (Youtube Link)
 -------------------
-Youtube: https://www.youtube.com/watch?v=pNUS9SKeZT8
+Youtube: <br/>
+[![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)](https://www.youtube.com/watch?v=pNUS9SKeZT8)
