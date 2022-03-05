@@ -2,7 +2,7 @@
 
 Description
 -----------
-Window platform to experiment with sorting algorithms (QuickSort, BubbleSort, Heap Sort, Selection Sort, Merge Sort) and visualize their operations.
+Window platform to experiment with sorting algorithms (QuickSort, BubbleSort, Heap Sort, Merge Sort) and visualize their operations.
 
 About
 -----
