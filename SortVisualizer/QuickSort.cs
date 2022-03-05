@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SortVisualizer
@@ -11,14 +13,16 @@ namespace SortVisualizer
     {
         private int[] panelArr;
         private Graphics g;
-        private int MaxVal;
+        private int ArrSize = 0;
+        private readonly int MaxVal;
         Brush BlackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush WhiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-        public QuickSort(int[] panelArray, Graphics graph, int MaxValue)
+        public QuickSort(int[] panelArray, Graphics graph, int MaxValue, int ArraySize)
         {
             panelArr = panelArray;
             g = graph;
             MaxVal = MaxValue;
+            ArrSize = ArraySize;
         }
 
         /*
@@ -27,36 +31,36 @@ namespace SortVisualizer
         public void NextSort()
         {
             int size = panelArr.Length;
-            quickSort(panelArr, 0, size-1);
+            quickSort(0, size-1);
             
         }
 
-        private void quickSort(int[] panelArr_IN, int low, int high)
+        private void quickSort(int low, int high)
         {
             if (low < high)
             {
                 // find pivot element such that
                 // elements smaller than pivot are on the left
                 // elements greater than pivot are on the right
-                int pivot = partition(panelArr_IN, low, high);
-                quickSort(panelArr_IN, low, pivot - 1);
-                quickSort(panelArr_IN, pivot + 1, high);
+                int pivot = partition(low, high);
+                quickSort(low, pivot - 1);
+                quickSort(pivot + 1, high);
             }
         }
 
-        private int partition(int[] panelArr_IN, int low, int high)
+        private int partition(int low, int high)
         {
-            int pivot = panelArr_IN[high];
+            int pivot = panelArr[high];
             int lowIndex = (low - 1);
             for (int j = low; j<high; j++)
             {
-                if (panelArr_IN[j] < pivot)
+                if (panelArr[j] < pivot)
                 {
                     lowIndex++;
-                    Swap(lowIndex,j);
+                    Swap(lowIndex, j);
                 }
             }
-            Swap(lowIndex+1,high);
+            Swap(lowIndex+1, high);
             return (lowIndex + 1);
         }
 
@@ -84,10 +88,22 @@ namespace SortVisualizer
             /*
              * Remove the old value from the panel
              */
-            g.FillRectangle(BlackBrush, pos, 0, 1, MaxVal);
-            g.FillRectangle(WhiteBrush, pos, MaxVal - height, 1, MaxVal);
+            if (pos >= 2)
+            {   
+                g.FillRectangle(BlackBrush, pos * ArrSize + pos, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos * ArrSize + pos, MaxVal - height, ArrSize, MaxVal);
+            }
+            else if (pos == 1)
+            {
+                g.FillRectangle(BlackBrush, pos + ArrSize, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos + ArrSize, MaxVal - height, ArrSize, MaxVal);
+            }
+            else
+            {
+                g.FillRectangle(BlackBrush, pos, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos, MaxVal - height, ArrSize, MaxVal);
+            }
         }
-
         public void ReDraw()
         {
             /*

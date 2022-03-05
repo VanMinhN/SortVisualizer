@@ -11,17 +11,24 @@ namespace SortVisualizer
 {
     public partial class Form1 : Form
     {
-        int[] panelArray;
+        //int[] panelArray;
+        List<int> panelArray;
         Graphics g;
         BackgroundWorker bgw = null;
         bool Paused = false;
+        int value = 0;
         Brush BlackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush WhiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
         public Form1()
         {
             InitializeComponent();
             DropDownMenu();
-            
+            this.Resize += Form1_Resize;
+        }
+
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            btnShuffle_Click(null, null);
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -101,22 +108,31 @@ namespace SortVisualizer
             g = visualpnl.CreateGraphics();
             int numEntries = visualpnl.Width;
             int MaxVal = visualpnl.Height;
-            panelArray = new int[numEntries];
-            g.FillRectangle(BlackBrush,0,0,numEntries,MaxVal);
+            panelArray = new List<int>();
             Random rand = new Random();
+            if (Sliderbar.Value == 100)
+            {
+                value = 1;
+            }
+            else { value = 100 - Sliderbar.Value; }
             /*
              *  Populate array with random number
              */
-            for (int i = 0; i< numEntries;i++)
+            for (int i = 0; i < numEntries - value;)
             {
-                panelArray[i] = rand.Next(0, MaxVal);
+                panelArray.Add(rand.Next(value, MaxVal));
+                i += value + 1;
             }
+            
+            g.FillRectangle(BlackBrush, 0, 0, numEntries, MaxVal);
             /*
              * Draw the value in the array on the panel
              */
-            for (int i =0;i <numEntries;i++)
+            int k = 0;
+            foreach (int i in panelArray)
             {
-                g.FillRectangle(WhiteBrush, i, MaxVal - panelArray[i], 1, MaxVal);
+                g.FillRectangle(WhiteBrush, k, MaxVal - i, value, MaxVal);
+                k += value + 1;
             }
         }
 
@@ -129,7 +145,7 @@ namespace SortVisualizer
             var ctors = type.GetConstructors(); //get contrucstor of that type
             try
             {
-                ISortVisualizer sv = (ISortVisualizer)ctors[0].Invoke(new object[] {panelArray, g, visualpnl.Height });
+                ISortVisualizer sv = (ISortVisualizer)ctors[0].Invoke(new object[] { panelArray.ToArray(), g, visualpnl.Height,value });
                 while (!sv.IsSorted()&&!bgw.CancellationPending)
                 {
                     sv.NextSort();
@@ -142,6 +158,10 @@ namespace SortVisualizer
         }
         #endregion
 
-        
+        private void Sliderbar_ValueChanged(object sender, EventArgs e)
+        {
+            SliderSize.Text = "Bar Width: " + Sliderbar.Value.ToString();
+            btnShuffle_Click(null, null);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SortVisualizer
@@ -12,14 +13,16 @@ namespace SortVisualizer
 
         private int[] panelArr;
         private Graphics g;
+        private int ArrSize = 0;
         private int MaxVal;
         Brush BlackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush WhiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-        public MergeSort(int[] panelArray, Graphics graph, int MaxValue)
+        public MergeSort(int[] panelArray, Graphics graph, int MaxValue, int ArraySize)
         {
             panelArr = panelArray;
             g = graph;
             MaxVal = MaxValue;
+            ArrSize = ArraySize;
         }
         /*
          * Sort Algorithm: Merge Sort
@@ -114,8 +117,21 @@ namespace SortVisualizer
             /*
              * Remove the old value from the panel
              */
-            g.FillRectangle(BlackBrush, pos, 0, 1, MaxVal);
-            g.FillRectangle(WhiteBrush, pos, MaxVal - height, 1, MaxVal);
+            if (pos >= 2)
+            {
+                g.FillRectangle(BlackBrush, pos * ArrSize + pos, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos * ArrSize + pos, MaxVal - height, ArrSize, MaxVal);
+            }
+            else if (pos == 1)
+            {
+                g.FillRectangle(BlackBrush, pos + ArrSize, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos + ArrSize, MaxVal - height, ArrSize, MaxVal);
+            }
+            else
+            {
+                g.FillRectangle(BlackBrush, pos, 0, ArrSize, MaxVal);
+                g.FillRectangle(WhiteBrush, pos, MaxVal - height, ArrSize, MaxVal);
+            }
         }
 
         public void ReDraw()
