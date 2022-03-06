@@ -40,7 +40,6 @@ namespace SortVisualizer
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnStart = new System.Windows.Forms.Button();
-            this.btnPause = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Sliderbar = new System.Windows.Forms.TrackBar();
             this.SliderSize = new System.Windows.Forms.Label();
@@ -97,7 +96,7 @@ namespace SortVisualizer
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -128,16 +127,6 @@ namespace SortVisualizer
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // btnPause
-            // 
-            this.btnPause.Location = new System.Drawing.Point(13, 114);
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
-            this.btnPause.TabIndex = 6;
-            this.btnPause.Text = "Pause";
-            this.btnPause.UseVisualStyleBackColor = true;
-            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -145,7 +134,7 @@ namespace SortVisualizer
             // 
             // Sliderbar
             // 
-            this.Sliderbar.Location = new System.Drawing.Point(13, 156);
+            this.Sliderbar.Location = new System.Drawing.Point(12, 127);
             this.Sliderbar.Maximum = 100;
             this.Sliderbar.Name = "Sliderbar";
             this.Sliderbar.Size = new System.Drawing.Size(168, 45);
@@ -155,7 +144,7 @@ namespace SortVisualizer
             // SliderSize
             // 
             this.SliderSize.AutoSize = true;
-            this.SliderSize.Location = new System.Drawing.Point(13, 208);
+            this.SliderSize.Location = new System.Drawing.Point(12, 175);
             this.SliderSize.Name = "SliderSize";
             this.SliderSize.Size = new System.Drawing.Size(68, 15);
             this.SliderSize.TabIndex = 8;
@@ -168,7 +157,6 @@ namespace SortVisualizer
             this.ClientSize = new System.Drawing.Size(908, 594);
             this.Controls.Add(this.SliderSize);
             this.Controls.Add(this.Sliderbar);
-            this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.visualpnl);
             this.Controls.Add(this.btnShuffle);
@@ -197,7 +185,6 @@ namespace SortVisualizer
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar Sliderbar;
         private System.Windows.Forms.Label SliderSize;

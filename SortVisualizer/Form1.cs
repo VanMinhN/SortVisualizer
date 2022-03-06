@@ -80,28 +80,6 @@ namespace SortVisualizer
             bgw.RunWorkerAsync(argument: comboBox1.SelectedItem);
 
         }
-
-        private void btnPause_Click(object sender, EventArgs e)
-        {
-            if (!Paused)
-            {
-                bgw.CancelAsync();
-                Paused = true;
-            }
-            else
-            {
-                if (bgw.IsBusy) return;
-                int numEntries = visualpnl.Width;
-                int MaxVal = visualpnl.Height;
-                Paused = false;
-                for (int i = 0; i < numEntries; i++)
-                {
-                    g.FillRectangle(BlackBrush, i, 0, 1, MaxVal);
-                    g.FillRectangle(WhiteBrush, i, MaxVal - panelArray[i], 1, MaxVal);
-                }
-                bgw.RunWorkerAsync(argument: comboBox1.SelectedItem);
-            }
-        }
         
         private void btnShuffle_Click(object sender, EventArgs e)
         {

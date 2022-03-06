@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SortVisualizer
@@ -89,18 +90,25 @@ namespace SortVisualizer
             /*
              * Remove the old value from the panel
              */
-            if (pos>=2)
+            if (pos >= 2)
             {
+                Thread.Sleep(18);
                 g.FillRectangle(BlackBrush, pos * ArrSize + pos, 0, ArrSize, MaxVal);
+                Thread.Sleep(18);
                 g.FillRectangle(WhiteBrush, pos * ArrSize + pos, MaxVal - height, ArrSize, MaxVal);
             }
             else if (pos == 1)
             {
+                Thread.Sleep(18);
                 g.FillRectangle(BlackBrush, pos + ArrSize, 0, ArrSize, MaxVal);
+                Thread.Sleep(18);
                 g.FillRectangle(WhiteBrush, pos + ArrSize, MaxVal - height, ArrSize, MaxVal);
             }
-            else {
+            else
+            {
+                Thread.Sleep(18);
                 g.FillRectangle(BlackBrush, pos, 0, ArrSize, MaxVal);
+                Thread.Sleep(18);
                 g.FillRectangle(WhiteBrush, pos, MaxVal - height, ArrSize, MaxVal);
             }
         }
