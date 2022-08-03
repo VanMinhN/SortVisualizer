@@ -1,5 +1,7 @@
 # SortVisualizer
-
+![](https://img.shields.io/badge/C%23-100%25-success)
+<br>
+<br>
 Description
 -----------
 Window platform to experiment with sorting algorithms (QuickSort, BubbleSort, Heap Sort, Merge Sort) and visualize their operations behind the scene.
